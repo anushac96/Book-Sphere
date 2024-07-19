@@ -1,7 +1,6 @@
 package com.book.sphere.role;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -30,28 +29,26 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="user")
 @EntityListeners(AuditingEntityListener.class)
-
+@Table(name = "role") // add this to match the table name if needed
 public class Role {
-	
-	
-	@Id
-	@GeneratedValue
-	private Integer id;
-	
-	@Column(unique = true)
-	private String nameString;
-	
-	@ManyToMany(mappedBy = "roles")
-	@JsonIgnore	//prevent serialization
-	private List<User> users;
-	
-	@CreatedDate
-	@Column(nullable = false, updatable = false)
-	private LocalDateTime createDate;
-	@LastModifiedBy
-	@Column(insertable = false)
-	private LocalDateTime lastModificationDate;
 
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Column(unique = true)
+    private String name;  // Changed from nameString to name
+
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore // prevent serialization
+    private List<User> users;
+
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createDate;
+
+    @LastModifiedBy
+    @Column(insertable = false)
+    private LocalDateTime lastModificationDate;
 }

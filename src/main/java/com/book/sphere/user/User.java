@@ -37,7 +37,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="user")
+@Table(name="book_user")
 @EntityListeners(AuditingEntityListener.class)
 
 public class User implements  UserDetails, Principal{
@@ -60,14 +60,15 @@ public class User implements  UserDetails, Principal{
 	@CreatedDate
 	@Column(nullable = false, updatable = false)
 	private LocalDateTime createDate;
+	
 	@LastModifiedBy
-	@Column(insertable = false)
-	private LocalDateTime lastModificationDate;
+	@Column(insertable = false)		//dont insert a new data, just update a existing data 
+	private LocalDateTime lastModifiedDate;
 
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
@@ -75,44 +76,44 @@ public class User implements  UserDetails, Principal{
 		
 		return this.roles
 				.stream()
-				.map(r->new SimpleGrantedAuthority(getName()))
+				.map(r->new SimpleGrantedAuthority(r.getName()))
 				.collect(Collectors.toList());
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return null;
+		return password;
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return !accountLocked;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return enabled;
 	}
 	
 	private String fullName(){

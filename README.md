@@ -72,6 +72,28 @@ We welcome contributions! Please fork the repository and create pull requests fo
 ## License
 This project is licensed under the MIT License.
 
+
+
+<!-- ## Git Command for my reference
+git pull origin main 
+
+
+## pom.xml
+1. Spring Web
+2. Spring Data JPA
+3. Spring validation
+4. Java Mail Sender
+5. Spring Security
+6. Postgres SQL Driver
+7. Lombok
+8. jjwt-api
+9. jjwt-impl
+10. jjwt-jackson
+
+## Project setup
+1. in terminal run "ocker-compose up -d"
+2. pom clean install
+
 ## Docker Setup
 1. https://desktop.docker.com/mac/main/amd64/93002/Docker.dmg (I used this version because my MacOs version is 10.15.7)
 2. did docket setting in docker-compose.yml
@@ -79,6 +101,4 @@ This project is licensed under the MIT License.
 4. To see running containers `docker ps`
 5. To stop a running container `docker stop <CONTAINER_ID>`
 6. To stop a running container `docker start <CONTAINER_ID>`
-
-<!-- ## Git Command for my reference
-git pull origin main -->
+-->
