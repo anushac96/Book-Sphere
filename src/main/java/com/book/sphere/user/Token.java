@@ -37,4 +37,54 @@ public class Token {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 	
+ // Manual Builder Implementation
+    public static class Builder {
+        private Integer id;
+        private String token;
+        private LocalDateTime createdAt;
+        private LocalDateTime expiresAt;
+        private LocalDateTime validatedAt;
+        private User user;
+
+        public Builder id(Integer id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder token(String token) {
+            this.token = token;
+            return this;
+        }
+
+        public Builder createdAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder expiresAt(LocalDateTime expiresAt) {
+            this.expiresAt = expiresAt;
+            return this;
+        }
+
+        public Builder validatedAt(LocalDateTime validatedAt) {
+            this.validatedAt = validatedAt;
+            return this;
+        }
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Token build() {
+            Token token = new Token();
+            token.id = this.id;
+            token.token = this.token;
+            token.createdAt = this.createdAt;
+            token.expiresAt = this.expiresAt;
+            token.validatedAt = this.validatedAt;
+            token.user = this.user;
+            return token;
+        }
+    }
 }
